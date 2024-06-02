@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Web Assistant</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>    
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        .chat-box {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            padding: 10px;
+            height: 300px;
+            overflow-y: scroll;
+        }
+        .user-message, .bot-message {
+            border-radius: 20px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .user-message {
+            background-color: #cfe9ff;
+            text-align: left;
+        }
+        .bot-message {
+            background-color: #ffefc1;
+            text-align: left;
+        }
+        .user-icon, .bot-icon {
+            width: 40px;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        img {
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <img src="static/images/bootup360logo.png" style="position: fixed; right: 20px; top: 20px; width: 100px;">
+    <div class="container mt-5">
+        <h1>BU360 Web Assistant</h1>
+        <div class="chat-box">
+            {% if result %}
+            <div class="bot-message">
+                <img src="static/images/bootupassistant.png" class="bot-icon">
+                <span>{{ result }}</span>
+            </div>
+            {% endif %}
+        </div>
+        <form action="/" method="POST" class="mt-3">
+            <input type="text" name="system_behavior" placeholder="Enter Assistant Behaviour" required class="form-control mb-2"/>
+            <input type="text" name="data" placeholder="Please enter your Prompt" required class="form-control mb-2"/>
+            <input type="submit" value="Submit Prompt" class="btn btn-primary">
+        </form>
+    </div>
+    <script>
+        setInterval(highlightAll, 1000);
+        function highlightAll() {
+            document.querySelectorAll("pre code").forEach(block => {
+                hljs.highlightBlock(block);
+            });
+        }
+    </script>
+</body>
+</html>
