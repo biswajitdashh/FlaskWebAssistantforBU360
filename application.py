@@ -18,7 +18,7 @@ def index():
                 messages=[
                     {"role": "system", "content":system_behavior},
                     {"role": "user", "content": data},
-                    {"role": "assistant", "content":"Refer to the inputs given by the user."},
+                    {"role": "assistant", "content":"Do a web search based on the context provided"},
                 ])
             res=response.choices[0].message.content
     return render_template("index.html",result=res)
